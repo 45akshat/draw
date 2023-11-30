@@ -983,12 +983,12 @@ let threeParaAndTitlesJson
                         selectCanvas(6)
 
                         // conclusion slide
-                    }, 400)
+                    }, 1000)
 
-                }, 400)
+                }, 1000)
 
         
-            }, 400)
+            }, 1000)
 
            
     
