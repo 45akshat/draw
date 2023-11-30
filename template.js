@@ -992,7 +992,7 @@ let threeParaAndTitlesJson
 
            
     
-        }, 700)
+        }, 1000)
 
 
 
