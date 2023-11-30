@@ -1,0 +1,173 @@
+
+
+function generateContent(userinput) {
+    return new Promise((resolve, reject) => {
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', 'https://ai-server.regem.in/api/ai.php');
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            let aioutput = xhr.responseText;
+            if (aioutput.includes("Try Again! or May be Server is Down!")) {
+              aioutput = "Try Again, Sorry about it.";
+            } else if (aioutput.includes("regem")) {
+              aioutput = aioutput.replaceAll("regem", "openai");
+            } else if (aioutput.includes("Regem")) {
+              aioutput = aioutput.replaceAll("Regem", "Openai");
+            }
+            console.log(aioutput);
+            resolve(aioutput);
+          } else {
+            reject(new Error('Request failed with status ' + xhr.status));
+          }
+        }
+      };
+  
+      xhr.send('input=write a title on subject:' + encodeURIComponent(userinput) + ', max words 3');
+    });
+  }
+
+
+let generatedTitlesArr = []
+let generatedParaArr = []
+
+function removeNumbering(text) {
+    // Use regular expression to remove numbering
+    return text.replace(/^\d+\.\s/, '');
+}
+
+function generateTenTitles(userinput) {
+    return new Promise((resolve, reject) => {
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', 'https://ai-server.regem.in/api/ai.php');
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+      let generatedTitlesText;
+  
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            generatedTitlesText = xhr.responseText;
+            if (generatedTitlesText.includes("Try Again! or May be Server is Down!")) {
+              generatedTitlesText = "Try Again, Sorry about it.";
+            } else if (generatedTitlesText.includes("regem")) {
+              generatedTitlesText = generatedTitlesText.replaceAll("regem", "openai");
+            } else if (generatedTitlesText.includes("Regem")) {
+              generatedTitlesText = generatedTitlesText.replaceAll("Regem", "Openai");
+            }
+            let titlesArr = generatedTitlesText.split("\n");
+  
+            // Remove numbering from each string in the array
+            const sectionsWithoutNumbering = titlesArr.map(removeNumbering);
+  
+            // Resolve with the result
+            resolve(sectionsWithoutNumbering);
+          } else {
+            reject(new Error('Request failed with status ' + xhr.status));
+          }
+        }
+      };
+  
+      xhr.send('input=For a presentation write 10 table of content heading on subject: "' + encodeURIComponent(userinput) + '".heading example: Introduction, features, target Audience, benefits etc. each heading of 2 words max');
+    });
+  }
+
+
+  
+
+let aioutputpara=""
+
+function generatePara(userinput) {
+    return new Promise((resolve, reject) => {
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', 'https://ai-server.regem.in/api/ai.php');
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            let aioutputpara = xhr.responseText;
+            if (aioutputpara.includes("Try Again! or May be Server is Down!")) {
+              aioutputpara = "Try Again, Sorry about it.";
+            } else if (aioutputpara.includes("regem")) {
+              aioutputpara = aioutputpara.replaceAll("regem", "openai");
+            } else if (aioutputpara.includes("Regem")) {
+              aioutputpara = aioutputpara.replaceAll("Regem", "Openai");
+            }
+            console.log(aioutputpara);
+  
+            // Resolve with the result
+            resolve(aioutputpara);
+          } else {
+            reject(new Error('Request failed with status ' + xhr.status));
+          }
+        }
+      };
+  
+      xhr.send('input=write 3 points on subject: ' + encodeURIComponent(userinput) + ', each point 10-15 words max. 3 points like 1., 2., 3.');
+    });
+}
+
+
+function generateParaForMainTemp(userinput) {
+    return new Promise((resolve, reject) => {
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', 'https://ai-server.regem.in/api/ai.php');
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            let aioutputpara = xhr.responseText;
+            if (aioutputpara.includes("Try Again! or May be Server is Down!")) {
+              aioutputpara = "Try Again, Sorry about it.";
+            } else if (aioutputpara.includes("regem")) {
+              aioutputpara = aioutputpara.replaceAll("regem", "openai");
+            } else if (aioutputpara.includes("Regem")) {
+              aioutputpara = aioutputpara.replaceAll("Regem", "Openai");
+            }
+            console.log(aioutputpara);
+  
+            // Resolve with the result
+            resolve(aioutputpara);
+          } else {
+            reject(new Error('Request failed with status ' + xhr.status));
+          }
+        }
+      };
+  
+      xhr.send('input=write 6 points on subject: ' + encodeURIComponent(userinput) + ', each point 10-15 words max. 6 points like 1., 2., 3.');
+    });
+}
+// write 3 points on subject: Finance Assistant App, each point has title and para, para of 14-20 words and title of 2 words. return in json format
+
+function generateImageKeyword(userinput) {
+    return new Promise((resolve, reject) => {
+      var xhr = new XMLHttpRequest();
+      xhr.open('POST', 'https://ai-server.regem.in/api/ai.php');
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            let imageKeyword = xhr.responseText;
+            if (imageKeyword.includes("Try Again! or May be Server is Down!")) {
+              imageKeyword = "Try Again, Sorry about it.";
+            } else if (imageKeyword.includes("regem")) {
+              imageKeyword = imageKeyword.replaceAll("regem", "openai");
+            } else if (imageKeyword.includes("Regem")) {
+              imageKeyword = imageKeyword.replaceAll("Regem", "Openai");
+            }
+            console.log(imageKeyword);
+            resolve(imageKeyword);
+          } else {
+            reject(new Error('Request failed with status ' + xhr.status));
+          }
+        }
+      };
+  
+      xhr.send('input= write an image keyword that explains on subject:' + encodeURIComponent(userinput) + '. max keyword words 1');
+    });
+  }
+  

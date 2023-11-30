@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Adjuster</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.4.0/fabric.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya&family=Poppins:ital,wght@0,500;1,600&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.css">
+ 
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/0.9.0rc1/jspdf.min.js"></script>
+
+</head>
+<body>
+    <div id="overlay"></div>
+    <div id="crop_cont">
+        <div id="crop_editor"></div>
+        <button id="saveButton">Save Cropped Image</button>
+
+
+    </div>
+    <main>
+
+        <div id="cont2">
+            <div id="spacer">
+                <div class="col_div">
+                    <div class="row_div" id="back_to_worksp_div">
+                        <svg width="25px" height="25px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" id="main-svg">
+    
+                            <title>arrow-left-circle</title>
+                            <desc>Created with Sketch Beta.</desc>
+                            <defs>
+                        
+                        </defs>
+                            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+                                <g id="Icon-Set-Filled" sketch:type="MSLayerGroup" transform="translate(-258.000000, -1089.000000)" fill="#000000">
+                                    <path d="M281,1106 L270.414,1106 L274.536,1110.12 C274.926,1110.51 274.926,1111.15 274.536,1111.54 C274.145,1111.93 273.512,1111.93 273.121,1111.54 L267.464,1105.88 C267.225,1105.64 267.15,1105.31 267.205,1105 C267.15,1104.69 267.225,1104.36 267.464,1104.12 L273.121,1098.46 C273.512,1098.07 274.145,1098.07 274.536,1098.46 C274.926,1098.86 274.926,1099.49 274.536,1099.88 L270.414,1104 L281,1104 C281.552,1104 282,1104.45 282,1105 C282,1105.55 281.552,1106 281,1106 L281,1106 Z M274,1089 C265.164,1089 258,1096.16 258,1105 C258,1113.84 265.164,1121 274,1121 C282.836,1121 290,1113.84 290,1105 C290,1096.16 282.836,1089 274,1089 L274,1089 Z" id="arrow-left-circle" sketch:type="MSShapeGroup" style="fill: rgb(99, 102, 131);">
+                        
+                        </path>
+                                </g>
+                            </g>
+                        </svg>
+                        <h4>Back to Workspace</h4>
+                    </div>
+
+                    <div id="menu_div">
+                        <div id="openMediaButton" class="row_div">
+                            <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" id="main-svg" stroke="#000" stroke-width="0">
+                                <g id="Media / Image_01">
+                                <path id="Vector" d="M3.00005 17.0001C3 16.9355 3 16.8689 3 16.8002V7.2002C3 6.08009 3 5.51962 3.21799 5.0918C3.40973 4.71547 3.71547 4.40973 4.0918 4.21799C4.51962 4 5.08009 4 6.2002 4H17.8002C18.9203 4 19.4801 4 19.9079 4.21799C20.2842 4.40973 20.5905 4.71547 20.7822 5.0918C21 5.5192 21 6.07899 21 7.19691V16.8031C21 17.2881 21 17.6679 20.9822 17.9774M3.00005 17.0001C3.00082 17.9884 3.01337 18.5058 3.21799 18.9074C3.40973 19.2837 3.71547 19.5905 4.0918 19.7822C4.5192 20 5.07899 20 6.19691 20H17.8036C18.9215 20 19.4805 20 19.9079 19.7822C20.2842 19.5905 20.5905 19.2837 20.7822 18.9074C20.9055 18.6654 20.959 18.3813 20.9822 17.9774M3.00005 17.0001L7.76798 11.4375L7.76939 11.436C8.19227 10.9426 8.40406 10.6955 8.65527 10.6064C8.87594 10.5282 9.11686 10.53 9.33643 10.6113C9.58664 10.704 9.79506 10.9539 10.2119 11.4541L12.8831 14.6595C13.269 15.1226 13.463 15.3554 13.6986 15.4489C13.9065 15.5313 14.1357 15.5406 14.3501 15.4773C14.5942 15.4053 14.8091 15.1904 15.2388 14.7607L15.7358 14.2637C16.1733 13.8262 16.3921 13.6076 16.6397 13.5361C16.8571 13.4734 17.0896 13.4869 17.2988 13.5732C17.537 13.6716 17.7302 13.9124 18.1167 14.3955L20.9822 17.9774M20.9822 17.9774L21 17.9996M15 10C14.4477 10 14 9.55228 14 9C14 8.44772 14.4477 8 15 8C15.5523 8 16 8.44772 16 9C16 9.55228 15.5523 10 15 10Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="stroke: rgb(33, 33, 33);"></path>
+                                </g>
+                            </svg>
+                            <h4>Upload Media</h4>
+    
+                        </div>
+    
+                        <div id="openTextButton" class="row_div">
+                            <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" id="main-svg">
+                                <path d="M9 9H15" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" style="fill: rgb(255, 255, 255); stroke: rgb(33, 33, 33);"></path>
+                                <path d="M12 15L12 9" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" style="fill: rgb(255, 255, 255); stroke: rgb(33, 33, 33);"></path>
+                                <path d="M6 4C6 5.10457 5.10457 6 4 6C2.89543 6 2 5.10457 2 4C2 2.89543 2.89543 2 4 2C5.10457 2 6 2.89543 6 4Z" stroke="#1C274C" stroke-width="1.5" style="fill: rgb(255, 255, 255); stroke: rgb(33, 33, 33);"></path>
+                                <path d="M6 20C6 21.1046 5.10457 22 4 22C2.89543 22 2 21.1046 2 20C2 18.8954 2.89543 18 4 18C5.10457 18 6 18.8954 6 20Z" stroke="#1C274C" stroke-width="1.5" style="fill: rgb(255, 255, 255); stroke: rgb(33, 33, 33);"></path>
+                                <path d="M22 4C22 5.10457 21.1046 6 20 6C18.8954 6 18 5.10457 18 4C18 2.89543 18.8954 2 20 2C21.1046 2 22 2.89543 22 4Z" stroke="#1C274C" stroke-width="1.5" style="fill: rgb(255, 255, 255); stroke: rgb(33, 33, 33);"></path>
+                                <path d="M22 20C22 21.1046 21.1046 22 20 22C18.8954 22 18 21.1046 18 20C18 18.8954 18.8954 18 20 18C21.1046 18 22 18.8954 22 20Z" stroke="#1C274C" stroke-width="1.5" style="fill: rgb(255, 255, 255); stroke: rgb(33, 33, 33);"></path>
+                                <path d="M18 4H6" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" style="fill: rgb(255, 255, 255); stroke: rgb(33, 33, 33);"></path>
+                                <path d="M20 18L20 12M20 6V8" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" style="fill: rgb(255, 255, 255); stroke: rgb(33, 33, 33);"></path>
+                                <path d="M18 20L12 20M6 20L8 20" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" style="fill: rgb(255, 255, 255); stroke: rgb(33, 33, 33);"></path>
+                                <path d="M4 6L4 18" stroke="#1C274C" stroke-width="1.5" stroke-linecap="round" style="fill: rgb(255, 255, 255); stroke: rgb(33, 33, 33);"></path>
+                            </svg>
+                            <h4>Text</h4>
+    
+                        </div>
+    
+    
+                        <div id="openTemplatesButton" class="row_div">
+                            <svg width="25px" height="25px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <title>Layout</title>
+                                <g id="Layout" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect id="Container" x="0" y="0" width="24" height="24">
+                            
+                            </rect>
+                                    <rect id="shape-1" stroke="#030819" stroke-width="2" stroke-linecap="round" x="4" y="4" width="16" height="16" rx="2">
+                            
+                            </rect>
+                                    <line x1="12" y1="12" x2="20" y2="12" id="shape-2" stroke="#030819" stroke-width="2" stroke-linecap="round">
+                            
+                            </line>
+                                    <line x1="12" y1="4" x2="12" y2="20" id="shape-3" stroke="#030819" stroke-width="2" stroke-linecap="round">
+                            
+                            </line>
+                                </g>
+                            </svg>
+                            <h4>Templates</h4>
+    
+                        </div>
+
+
+                        <!-- <div id="openTemplatesButton" class="row_div">
+                            <svg width="25px" height="25px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <title>Layout</title>
+                                <g id="Layout" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect id="Container" x="0" y="0" width="24" height="24">
+                            
+                            </rect>
+                                    <rect id="shape-1" stroke="#030819" stroke-width="2" stroke-linecap="round" x="4" y="4" width="16" height="16" rx="2">
+                            
+                            </rect>
+                                    <line x1="12" y1="12" x2="20" y2="12" id="shape-2" stroke="#030819" stroke-width="2" stroke-linecap="round">
+                            
+                            </line>
+                                    <line x1="12" y1="4" x2="12" y2="20" id="shape-3" stroke="#030819" stroke-width="2" stroke-linecap="round">
+                            
+                            </line>
+                                </g>
+                            </svg>
+                            <h4>Templates</h4>
+    
+                        </div>
+                        <div id="openTemplatesButton" class="row_div">
+                            <svg width="25px" height="25px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <title>Layout</title>
+                                <g id="Layout" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                    <rect id="Container" x="0" y="0" width="24" height="24">
+                            
+                            </rect>
+                                    <rect id="shape-1" stroke="#030819" stroke-width="2" stroke-linecap="round" x="4" y="4" width="16" height="16" rx="2">
+                            
+                            </rect>
+                                    <line x1="12" y1="12" x2="20" y2="12" id="shape-2" stroke="#030819" stroke-width="2" stroke-linecap="round">
+                            
+                            </line>
+                                    <line x1="12" y1="4" x2="12" y2="20" id="shape-3" stroke="#030819" stroke-width="2" stroke-linecap="round">
+                            
+                            </line>
+                                </g>
+                            </svg>
+                            <h4>Templates</h4>
+    
+                        </div> -->
+                    </div>
+                    <div>
+                        <div class="export_div">
+                            <div class="row_div">
+                                <div class="row_div" id="download_btn">
+                                    <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" id="main-svg">
+                                        <path d="M12.5535 16.5061C12.4114 16.6615 12.2106 16.75 12 16.75C11.7894 16.75 11.5886 16.6615 11.4465 16.5061L7.44648 12.1311C7.16698 11.8254 7.18822 11.351 7.49392 11.0715C7.79963 10.792 8.27402 10.8132 8.55352 11.1189L11.25 14.0682V3C11.25 2.58579 11.5858 2.25 12 2.25C12.4142 2.25 12.75 2.58579 12.75 3V14.0682L15.4465 11.1189C15.726 10.8132 16.2004 10.792 16.5061 11.0715C16.8118 11.351 16.833 11.8254 16.5535 12.1311L12.5535 16.5061Z" fill="#fff"></path>
+                                        <path d="M3.75 15C3.75 14.5858 3.41422 14.25 3 14.25C2.58579 14.25 2.25 14.5858 2.25 15V15.0549C2.24998 16.4225 2.24996 17.5248 2.36652 18.3918C2.48754 19.2919 2.74643 20.0497 3.34835 20.6516C3.95027 21.2536 4.70814 21.5125 5.60825 21.6335C6.47522 21.75 7.57754 21.75 8.94513 21.75H15.0549C16.4225 21.75 17.5248 21.75 18.3918 21.6335C19.2919 21.5125 20.0497 21.2536 20.6517 20.6516C21.2536 20.0497 21.5125 19.2919 21.6335 18.3918C21.75 17.5248 21.75 16.4225 21.75 15.0549V15C21.75 14.5858 21.4142 14.25 21 14.25C20.5858 14.25 20.25 14.5858 20.25 15C20.25 16.4354 20.2484 17.4365 20.1469 18.1919C20.0482 18.9257 19.8678 19.3142 19.591 19.591C19.3142 19.8678 18.9257 20.0482 18.1919 20.1469C17.4365 20.2484 16.4354 20.25 15 20.25H9C7.56459 20.25 6.56347 20.2484 5.80812 20.1469C5.07435 20.0482 4.68577 19.8678 4.40901 19.591C4.13225 19.3142 3.9518 18.9257 3.85315 18.1919C3.75159 17.4365 3.75 16.4354 3.75 15Z" fill="#fff"></path>
+                                        </svg>
+                                    <span>Download</span>
+                                </div>
+                                <div class="row_div" id="share_btn">
+                                    <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M13.803 5.33333C13.803 3.49238 15.3022 2 17.1515 2C19.0008 2 20.5 3.49238 20.5 5.33333C20.5 7.17428 19.0008 8.66667 17.1515 8.66667C16.2177 8.66667 15.3738 8.28596 14.7671 7.67347L10.1317 10.8295C10.1745 11.0425 10.197 11.2625 10.197 11.4872C10.197 11.9322 10.109 12.3576 9.94959 12.7464L15.0323 16.0858C15.6092 15.6161 16.3473 15.3333 17.1515 15.3333C19.0008 15.3333 20.5 16.8257 20.5 18.6667C20.5 20.5076 19.0008 22 17.1515 22C15.3022 22 13.803 20.5076 13.803 18.6667C13.803 18.1845 13.9062 17.7255 14.0917 17.3111L9.05007 13.9987C8.46196 14.5098 7.6916 14.8205 6.84848 14.8205C4.99917 14.8205 3.5 13.3281 3.5 11.4872C3.5 9.64623 4.99917 8.15385 6.84848 8.15385C7.9119 8.15385 8.85853 8.64725 9.47145 9.41518L13.9639 6.35642C13.8594 6.03359 13.803 5.6896 13.803 5.33333Z" fill="#1C274C"/>
+                                        </svg>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <!-- <button id="hideMediaButton"></button> -->
+
+
+                <div id="media_div">
+                    <svg  class="hideMediaButton" width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" id="main-svg">
+                        <path opacity="0.5" d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" fill="#1C274C" style="fill: rgb(168, 168, 168);"></path>
+                        <path d="M8.96967 8.96967C9.26256 8.67678 9.73744 8.67678 10.0303 8.96967L12 10.9394L13.9697 8.96969C14.2626 8.6768 14.7374 8.6768 15.0303 8.96969C15.3232 9.26258 15.3232 9.73746 15.0303 10.0304L13.0607 12L15.0303 13.9696C15.3232 14.2625 15.3232 14.7374 15.0303 15.0303C14.7374 15.3232 14.2625 15.3232 13.9696 15.0303L12 13.0607L10.0304 15.0303C9.73746 15.3232 9.26258 15.3232 8.96969 15.0303C8.6768 14.7374 8.6768 14.2626 8.96969 13.9697L10.9394 12L8.96967 10.0303C8.67678 9.73744 8.67678 9.26256 8.96967 8.96967Z" fill="#1C274C" style="fill: rgb(0, 20, 87);"></path>
+                    </svg>
+
+                    <div id="replace_media_div">
+                    <h2>Replace Media</h2>
+
+                        <input type="file" id="repImageDivInput" accept="image/*" style="display: none;">
+                        <div id="repImgDragAndDrop" class="drag-and-drop" onclick="document.getElementById('repImageDivInput').click()">
+                            <p>Click Or Drop Image</p>
+                        </div>
+                        <button  id="replaceImage" style="display: none;">
+                         Replace
+                        </button>
+                        <br>
+
+
+                        <div id="edit_media_div">
+                            <h2>Edit Options</h2>
+                        
+                            <div class="row_div">
+                                <button id="cropButton">
+                                    <svg width="20px" height="20px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="none">
+                                        <path fill="#000000" fill-rule="evenodd" d="M5.5 2a1 1 0 00-2 0v2H2a1 1 0 000 2h12v7h2V5a1 1 0 00-1-1H5.5V2zm-2 5v8a1 1 0 001 1H14v2a1 1 0 102 0v-2h2a1 1 0 100-2H5.5V7h-2z"/>
+                                      </svg>
+                                </button>
+
+                                
+                                <button id="rotate"><svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" id="main-svg">
+                                    <path opacity="0.4" d="M14.8901 5.0799C14.0201 4.8199 13.0601 4.6499 12.0001 4.6499C7.21008 4.6499 3.33008 8.5299 3.33008 13.3199C3.33008 18.1199 7.21008 21.9999 12.0001 21.9999C16.7901 21.9999 20.6701 18.1199 20.6701 13.3299C20.6701 11.5499 20.1301 9.8899 19.2101 8.5099" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M16.1302 5.32L13.2402 2" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M16.1298 5.31982L12.7598 7.77982" stroke="#292D32" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg></button>
+                                <!-- <input type="range" id="scale" min="0.1" max="2" step="0.1" value="1"> -->
+                                
+                                <button  id="deleteImage">
+                                <svg fill="#000000" width="20px" height="20px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" id="main-svg"><path d="M5.755,20.283,4,8H20L18.245,20.283A2,2,0,0,1,16.265,22H7.735A2,2,0,0,1,5.755,20.283ZM21,4H16V3a1,1,0,0,0-1-1H9A1,1,0,0,0,8,3V4H3A1,1,0,0,0,3,6H21a1,1,0,0,0,0-2Z" style="fill: rgb(247, 59, 59);"></path></svg>
+        
+                                </button>
+            
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div id="upload_media_div">
+                        <h2>Upload Media</h2>
+
+                        <input type="file" id="imageInput" accept="image/*" style="display: none;">
+                        <div id="dragAndDrop" class="drag-and-drop" onclick="document.getElementById('imageInput').click()">
+                            <p>Upload Image</p>
+                        </div>
+                        <br>
+                        <div  class="row_div">
+                            <input type="url" id="imageUrlInput" placeholder="Image URL">
+                            <br>
+                            <button id="loadImage">
+                                <svg width="15px" height="15px" viewBox="0 -6.5 38 38" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        
+                                    <title>right-arrow</title>
+                                    <desc>Created with Sketch.</desc>
+                                    <g id="icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                        <g id="ui-gambling-website-lined-icnos-casinoshunter" transform="translate(-1511.000000, -158.000000)" fill="#1C1C1F" fill-rule="nonzero">
+                                            <g id="1" transform="translate(1350.000000, 120.000000)">
+                                                <path d="M187.812138,38.5802109 L198.325224,49.0042713 L198.41312,49.0858421 C198.764883,49.4346574 198.96954,49.8946897 199,50.4382227 L198.998248,50.6209428 C198.97273,51.0514917 198.80819,51.4628128 198.48394,51.8313977 L198.36126,51.9580208 L187.812138,62.4197891 C187.031988,63.1934036 185.770571,63.1934036 184.990421,62.4197891 C184.205605,61.6415481 184.205605,60.3762573 184.990358,59.5980789 L192.274264,52.3739093 L162.99947,52.3746291 C161.897068,52.3746291 161,51.4850764 161,50.3835318 C161,49.2819872 161.897068,48.3924345 162.999445,48.3924345 L192.039203,48.3917152 L184.990421,41.4019837 C184.205605,40.6237427 184.205605,39.3584519 184.990421,38.5802109 C185.770571,37.8065964 187.031988,37.8065964 187.812138,38.5802109 Z" id="right-arrow">
+                                
+                                    </path>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </svg>
+                            </button>
+    
+                        </div>
+
+
+                        <h2>Image Storage</h2>
+                        <!-- Add this div to the left column (cont2) for the thumbnail images -->
+                        <div id="imageList" class="image-list"></div>
+                        <h2>Pexels Stock Images</h2>
+                        
+                        <div id="pexel_cont">
+                            <div  class="row_div">
+                                <input type="text" id="searchPexelInput" placeholder="Search Image">
+                                <br>
+                                <button id="searchBtnPexel">
+                                    <svg width="15px" height="15px" viewBox="0 -6.5 38 38" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            
+                                        <title>right-arrow</title>
+                                        <desc>Created with Sketch.</desc>
+                                        <g id="icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <g id="ui-gambling-website-lined-icnos-casinoshunter" transform="translate(-1511.000000, -158.000000)" fill="#1C1C1F" fill-rule="nonzero">
+                                                <g id="1" transform="translate(1350.000000, 120.000000)">
+                                                    <path d="M187.812138,38.5802109 L198.325224,49.0042713 L198.41312,49.0858421 C198.764883,49.4346574 198.96954,49.8946897 199,50.4382227 L198.998248,50.6209428 C198.97273,51.0514917 198.80819,51.4628128 198.48394,51.8313977 L198.36126,51.9580208 L187.812138,62.4197891 C187.031988,63.1934036 185.770571,63.1934036 184.990421,62.4197891 C184.205605,61.6415481 184.205605,60.3762573 184.990358,59.5980789 L192.274264,52.3739093 L162.99947,52.3746291 C161.897068,52.3746291 161,51.4850764 161,50.3835318 C161,49.2819872 161.897068,48.3924345 162.999445,48.3924345 L192.039203,48.3917152 L184.990421,41.4019837 C184.205605,40.6237427 184.205605,39.3584519 184.990421,38.5802109 C185.770571,37.8065964 187.031988,37.8065964 187.812138,38.5802109 Z" id="right-arrow">
+                                    
+                                        </path>
+                                                </g>
+                                            </g>
+                                        </g>
+                                    </svg>
+                                </button>
+        
+                            </div>
+                            <div id="gallery"></div>
+
+                        </div>
+
+    
+                    </div>
+    
+
+
+                    <!-- End of Text Options -->
+
+                </div>
+
+                <div id="text_div">
+                    <svg  class="hideMediaButton" width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" id="main-svg">
+                        <path opacity="0.5" d="M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" fill="#1C274C" style="fill: rgb(168, 168, 168);"></path>
+                        <path d="M8.96967 8.96967C9.26256 8.67678 9.73744 8.67678 10.0303 8.96967L12 10.9394L13.9697 8.96969C14.2626 8.6768 14.7374 8.6768 15.0303 8.96969C15.3232 9.26258 15.3232 9.73746 15.0303 10.0304L13.0607 12L15.0303 13.9696C15.3232 14.2625 15.3232 14.7374 15.0303 15.0303C14.7374 15.3232 14.2625 15.3232 13.9696 15.0303L12 13.0607L10.0304 15.0303C9.73746 15.3232 9.26258 15.3232 8.96969 15.0303C8.6768 14.7374 8.6768 14.2626 8.96969 13.9697L10.9394 12L8.96967 10.0303C8.67678 9.73744 8.67678 9.26256 8.96967 8.96967Z" fill="#1C274C" style="fill: rgb(0, 20, 87);"></path>
+                    </svg>
+
+                    <!-- Text customization options -->
+                    <h2>Text Options</h2>
+                    <button id="addText">Add New Text +</button>
+                    <div class="text-options">
+                        <div class="row_div">
+                            <label for="setFontFamily">Font</label>
+                            <select id="setFontFamily">
+                                <option value="Arial">Arial</option>
+                                <option value="Alegreya">Alegreya</option>
+                                <option value="poppins">poppins</option>
+                                <option value="Times New Roman">Times New Roman</option>
+                                <option value="Verdana">Verdana</option>
+                                <!-- Add more font options as needed -->
+                            </select>
+                        </div>
+
+                        <br>
+                        <div class="row_div">
+                            <label for="setFontSize">Size</label>
+                            <div class="row_div" id="fontAdjuster">
+                                <input type="range" id="setFontSize" min="10" max="80" step="1" value="20">
+                                <span id="fontSizeLabel">23px</span>
+                            </div>
+                            
+                        </div>
+                        <br>
+                        <div class="row_div">
+                            <label for="setFontWeight">Style</label>
+                            <select id="setFontWeight">
+                                <option value="normal">Normal</option>
+                                <option value="bold">Bold</option>
+                                <option value="italic">Italic</option>
+                                <!-- Add more font weight options as needed -->
+                            </select>
+                        </div>
+
+                        <br>
+                        <div class="row_div">
+
+                            <label for="setTextColor">Color</label>
+                            <input type="color" id="setTextColor" value="#000000">
+                            
+                        </div>
+                        <br>
+                        <div class="row_div">
+                            <label for="setTextAlignment">Align</label>
+                            <select id="setTextAlignment">
+                                <option value="left">Left</option>
+                                <option value="center">Center</option>
+                                <option value="right">Right</option>
+                            </select>
+                        </div>
+ 
+                    </div>
+
+                </div>
+
+                <!-- Add Undo and Redo buttons to your HTML structure -->
+
+            </div>
+
+            <div class="row_div" id="undo_redo_div">
+                <button class="undo-button" onclick="undo()">Undo</button>
+                <button class="redo-button" onclick="redo()">Redo</button>    
+            </div>
+
+            
+        </div>
+
+        <div id="cont1">
+            <!-- <canvas id="canvas"  width="100" style="height: 80vw; width: 100%;"></canvas> -->
+            <canvas id="canvas0"  width="100" style="height: 80vw; width: 100%;"></canvas>
+            <div class="addCanvasDiv"><button class="addCanvasBelowBtn" >+</button></div>
+            <canvas id="canvas1"  width="100" style="height: 80vw; width: 100%;"></canvas>
+            <div class="addCanvasDiv"><button class="addCanvasBelowBtn" >+</button></div>
+            
+            <canvas id="canvas2"  width="100" style="height: 80vw; width: 100%;"></canvas>
+            <div class="addCanvasDiv"><button class="addCanvasBelowBtn" >+</button></div>
+
+            
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.js"></script>
+ 
+  
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+    <script src="crop.js"></script>
+    <script src="pexels.js"></script>
+    <script src="template.js"></script>
+</body>
+</html>

@@ -1,0 +1,353 @@
+body{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: "poppins", Helvetica, sans-serif;
+}
+
+
+main{
+    background: #e3e2ef;
+    
+/* background: linear-gradient(28deg, rgba(255,253,238,1) 0%, rgba(255,242,209,1) 11%, rgba(201,202,255,1) 26%, rgba(221,188,255,1) 40%, rgba(213,200,255,1) 48%, rgba(240,221,241,1) 57%, rgba(255,233,233,1) 62%, rgba(255,222,233,1) 69%, rgba(255,204,233,1) 74%, rgba(255,176,195,1) 89%, rgba(255,196,208,1) 100%); */
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+
+#cont2{
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    /* width: 20vw; */
+    min-width: fit-content;
+    height: 100vh;
+    background-color: rgb(255, 255, 255);
+}
+
+.canvas-container{
+    width: 60vw;
+}
+
+#cont1{
+    
+    height: 90vh;
+    overflow-y: auto;
+    width: 80vw;
+    /* padding: 0vh 2vw; */
+    padding-bottom: 10vh;
+}
+
+/* Add this CSS to style the thumbnail images */
+.image-list {
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+}
+
+.image-list img {
+    border-radius: 10px;
+    width: 100px;
+    height: auto;
+    margin: 5px;
+    cursor: pointer;
+}
+
+
+
+
+/* Add CSS for the drag-and-drop area with animation */
+.drag-and-drop {
+    width: 100%;
+    height: 100px;
+    background-color: rgb(242, 242, 242);
+    border: 2px dashed gray;
+    display: flex;
+    justify-content: center;
+    border-radius: 15px;
+    margin-top: 10px;
+    align-items: center;
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+
+.drag-and-drop.dragover {
+    background-color: darkgray;
+
+    border-color: darkgray;
+}
+
+
+#spacer{
+    
+    margin: 20px;
+}
+
+#media_div{
+    display: none;
+    z-index: 2;
+
+}
+
+#text_div{
+    display: none;
+    z-index: 2;
+}
+
+button{
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin: 5px 5px;
+    width: fit-content;
+}
+
+select{
+    width: 50%;
+    border: 1px solid gray;
+    padding: 5px 5px;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+#cont1::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE, Edge and Firefox */
+  #cont1 {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+
+  .text-options{
+    display: flex;
+    margin-top: 20px;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .row_div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  #imageUrlInput, #searchPexelInput{
+    width: 10vw;
+    border: 1px solid lightgray;
+    padding: 10px 20px;
+    border-radius: 10px;
+  }
+  
+  .text-options .row_div{
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .text-options label{
+    font-size: 14px;
+    margin-right: 10px;
+  }
+
+
+  #addText{
+    margin-left: 0;
+  }
+
+
+  .col_div{
+    display: flex;
+    /* position: absolute; */
+    top: 0;
+    right: 0px;
+    padding: 10px;
+    z-index: 1;
+    background-color: rgb(255, 255, 255);
+    flex-direction: column;
+    height: 90vh;
+    /* align-items: center; */
+    justify-content: space-between;
+  }
+
+  #menu_div svg{
+    margin-right: 15px;
+  }
+
+  #download_btn, #share_btn{
+    padding: 10px 15px;
+    padding-right: 25px;
+    cursor: pointer;
+    width: fit-content;
+    border-radius: 10px;
+    background: linear-gradient(28deg, rgb(142, 156, 247) 0%, rgb(20, 6, 175) 100%);
+    margin-bottom: 10px;
+    color: white;
+  }
+
+  #share_btn{
+    color: black;
+    padding: 10px 0px;
+    margin-left: 5px;
+    background: linear-gradient(28deg, rgb(223, 225, 235) 0%, rgb(202, 216, 248) 100%);
+  }
+
+  #menu_div h4{
+    margin: 0px 0px;
+    padding: 10px 0px;
+  }
+
+  #menu_div .row_div{
+    margin: 10px 0px;
+    padding-left: 20px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  #menu_div .row_div:hover{
+    background-color: #eee;
+
+  }
+
+#back_to_worksp_div{
+    cursor: pointer;
+}
+
+#back_to_worksp_div svg{
+    margin-right: 10px;
+}
+
+#loadImage{
+    padding: 10px 10px;
+}
+
+.export_div svg{
+    margin: 0px 10px;
+}
+
+#undo_redo_div{
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    z-index: 10;
+}
+
+#undo_redo_div button{
+    background-color: white;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+#setFontSize{
+    width: 60%;
+}
+
+#fontAdjuster{
+    width: 60%;
+    justify-content: right;
+}
+
+#fontSizeLabel{
+    font-size: 12px;
+    width: 50px;
+}
+
+#crop_cont{
+    display: none;
+    height: 50vh;
+    width: 40vw;
+    left: 40vw;
+    top: 25vh;
+    position: absolute;
+    z-index: 99;
+    border-radius: 25px;
+    background-color: white;
+}
+
+.container {
+    height: 40vh;
+    display: flex;
+    border-radius: 25px;
+    padding-top: 20px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .container img {
+    max-width: 20vw;
+    max-height: auto;
+  }
+
+  #overlay{
+    display: none;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: #0000008d;
+    z-index: 98;
+  }
+
+  #saveButton{
+    margin: 10px;
+    margin-left: 20px;
+  }
+  .cropper-bg{
+    background-image: none;
+    background-color: white;
+  }
+
+  .cropper-modal {
+    background-color: #ffffff;
+  }
+
+
+
+
+  #gallery {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: center;
+  }
+
+  .image-container {
+    margin: 10px;
+  }
+
+  #gallery img {
+    width: 100px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .addCanvasDiv{
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    width: 100%;
+    max-width: 980px;
+    position: relative;
+    z-index: 9;
+
+  }
+
+  .addCanvasBelowBtn{
+    display: none;
+    position: absolute;
+    background-color: white;
+    margin-top: 14px;
+    font-size: 14px;
+    padding: 4px 10px;
+    outline:2px solid #ffffff;
+    transition: 0.2s all;
+    
+  }
+
+  .addCanvasBelowBtn:hover{
+    font-size: 16px;
+    background-color: rgb(215, 224, 250);
+
+  }
