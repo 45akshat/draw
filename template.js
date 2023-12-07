@@ -908,6 +908,7 @@ let threeParaAndTitlesJson
         selectCanvas(2)
         loadImageFromURL('assets/acc.jpg', true)
 
+        await new Promise(resolve => setTimeout(resolve, 300));
 
         // await splitPointsAsync(generatedParaArr[2])
 
@@ -983,16 +984,16 @@ let threeParaAndTitlesJson
                         selectCanvas(6)
 
                         // conclusion slide
-                    }, 1000)
+                    }, 300)
 
-                }, 1000)
+                }, 300)
 
         
-            }, 1000)
+            }, 400)
 
            
     
-        }, 1000)
+        }, 300)
 
 
 

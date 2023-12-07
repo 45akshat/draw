@@ -372,42 +372,37 @@ AddPageVisibility()
 
 
 
-function createHtmlFromJson(jsonData) {
-    var html = "";
-
-    // Iterate through objects in the canvas JSON
-    jsonData.objects.forEach(function(obj) {
-        // Check object type
-        if (obj.type === 'image') {
-            // Handle image objects
-            html += '<img src="' + obj.src + '" ';
-            html += 'style="';
-            html += 'position: absolute;';
-            html += 'left: ' + obj.left + 'px; ';
-            html += 'top: ' + obj.top + 'px; ';
-            html += 'width: ' + obj.width * obj.scaleX + 'px; ';
-            html += 'height: ' + obj.height * obj.scaleY + 'px; ';
-            html += '" />';
-        } else if (obj.type === 'textbox') {
-            // Handle text objects
-            html += '<div ';
-            html += 'style="';
-            html += 'position: absolute;';
-            html += 'width: '+ obj.width + 'px;'
-            html += 'whitespace: word-wrap;'
-            html += 'left: ' + obj.left + 'px; ';
-            html += 'top: ' + obj.top + 'px; ';
-            html += 'font-size: ' + obj.fontSize + 'px; ';
-            html += 'font-family: ' + obj.fontFamily+'; ';
-            html += 'font-weight: ' + obj.fontWeight+'; ';
-            // Add other text-related styles as needed
-            html += '"';
-            html += '>' + obj.text + '</div>';
+function createHtmlFromJson() {
+    var exportHtml = ""
+for (let i = 0; i < canvases.length; i++) {
+    exportHtml +=  `<!DOCTYPE html>
+    <html>
+    
+    <head>
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+      <link
+        href="https://fonts.googleapis.com/css2?family=Alegreya&amp;family=Poppins:ital,wght@0,500;1,600&amp;display=swap"
+        rel="stylesheet">
+    
+      <style>
+        .aaon {
+          display: flex;
         }
-        // Add more conditions for other object types as needed
-    });
+    
+        body {
+          height: fit-content;
+          margin: 0;
+          padding: 0;
+        }
+      </style>
+    </head>
+    
+    <body><div class='aaon'>`+canvases[i].toSVG()+`</div>
+    </body>
+    </html>`
+}
 
-    return html;
+return exportHtml
 }
 
 
@@ -515,8 +510,10 @@ function loadImageFromURL(url, accentImg) {
             left: -fabricObject.width / 2,
             top: -fabricObject.height / 2
         })
-        
-        img.set("clipPath", roundedCorners(img, 10))
+        if(accentImg!= true){
+            img.set("clipPath", roundedCorners(img, 10))
+
+        }
 
         // Add the image to the canvas from the JSON representation
         const canvasJSON = currSelectedCanvas.toJSON();
