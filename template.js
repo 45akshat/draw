@@ -10,7 +10,7 @@ function addText(inputText, accText, title, para, remark) {
         fill: '#000000',
         fontSize: 16,
         fontWeight: 'normal',
-        fontFamily: 'Arial',
+        fontFamily: 'lato',
         text: inputText,
         lineHeight: 1.1,
         cornerStyle: 'circle',
@@ -51,7 +51,7 @@ function addText(inputText, accText, title, para, remark) {
                 textOptions.fontSize = 15
                 textOptions.lineHeight = 1.1
             }
-            textOptions.fontFamily = "Arial"
+            textOptions.fontFamily = "lato"
 
         }
 
@@ -121,7 +121,7 @@ function mainTemplate(inputText, accText, title, para, remark){
         fill: '#000000',
         fontSize: 16,
         fontWeight: 'normal',
-        fontFamily: 'Arial',
+        fontFamily: 'lato',
         text: inputText,
         lineHeight: 1.1,
         cornerStyle: 'circle',
@@ -162,7 +162,7 @@ function mainTemplate(inputText, accText, title, para, remark){
                 textOptions.fontSize = 15
                 textOptions.lineHeight = 1.1
             }
-            textOptions.fontFamily = "Arial"
+            textOptions.fontFamily = "lato"
 
         }
 
@@ -231,7 +231,7 @@ function leftAccImgWithThreePoints(inputText, accText, title, para, paraNum) {
         fill: '#000000',
         fontSize: 16,
         fontWeight: 'normal',
-        fontFamily: 'Arial',
+        fontFamily: 'lato',
         text: inputText,
         lineHeight: 1.1,
         cornerStyle: 'circle',
@@ -273,7 +273,7 @@ function leftAccImgWithThreePoints(inputText, accText, title, para, paraNum) {
                 textOptions.fontSize = 15
                 textOptions.lineHeight = 1.1
             }
-            textOptions.fontFamily = "Arial"
+            textOptions.fontFamily = "lato"
             
             if(paraNum == 0){
                 textOptions.top  = titleAccHeight+canvasHeight/12+canvasHeight/12
@@ -340,7 +340,7 @@ function leftCenterTitle(inputText, accText, title, para, paraNum, subtitle) {
         fill: '#000000',
         fontSize: 16,
         fontWeight: 'normal',
-        fontFamily: 'Arial',
+        fontFamily: 'lato',
         text: inputText,
         lineHeight: 1.1,
         cornerStyle: 'circle',
@@ -399,7 +399,7 @@ function leftCenterTitle(inputText, accText, title, para, paraNum, subtitle) {
                 textOptions.fontSize = 15
                 textOptions.lineHeight = 1.1
             }
-            textOptions.fontFamily = "Arial"
+            textOptions.fontFamily = "lato"
             
 
 
@@ -668,7 +668,7 @@ async function colAccImgWithThreePoints(inputText, accText, title, para, paraNum
         fill: '#000000',
         fontSize: 16,
         fontWeight: 'normal',
-        fontFamily: 'Arial',
+        fontFamily: 'lato',
         text: inputText,
         lineHeight: 1.1,
         cornerStyle: 'circle',
@@ -730,7 +730,7 @@ async function colAccImgWithThreePoints(inputText, accText, title, para, paraNum
                 textOptions.fontSize = 15;
                 textOptions.lineHeight = 1.1;
             }
-            textOptions.fontFamily = 'Arial';
+            textOptions.fontFamily = 'lato';
             textOptions.top = subtitleAccHeight + canvasHeight/24 + titleAccHeight + canvasHeight / 10 + canvasHeight / 6;
 
             if (paraNum == 0) {
@@ -1119,6 +1119,7 @@ let threeParaAndTitlesJson
 // }
 
 generateMainTemplate(userinput)
+    
 
 // wgthe accent image dont use scale to resize keep scale as 1 only.
 
