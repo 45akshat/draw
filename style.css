@@ -91,6 +91,11 @@ main{
 
 }
 
+#images_div{
+  display: none;
+  z-index: 2;
+}
+
 #text_div{
     display: none;
     z-index: 2;

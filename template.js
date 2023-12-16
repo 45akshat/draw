@@ -38,7 +38,7 @@ function addText(inputText, accText, title, para, remark) {
             
         }
         if(para == true){
-            textOptions.fontSize = 16.5
+            textOptions.fontSize = 15.8
 
             textOptions.width = remainingWid
             textOptions.fontWeight  = "normal"
@@ -159,7 +159,7 @@ function mainTemplate(inputText, accText, title, para, remark){
                 textOptions.fontSize = 13
                 textOptions.lineHeight = 1
             }else if(canvasWidth < 780){
-                textOptions.fontSize = 13.8
+                textOptions.fontSize = 14
                 textOptions.lineHeight = 1.1
             }
             textOptions.fontFamily = "poppins"
@@ -261,16 +261,16 @@ function leftAccImgWithThreePoints(inputText, accText, title, para, paraNum) {
         }
         if(para == true){
 
-            textOptions.fontSize = 18
+            textOptions.fontSize = 15.5
 
             textOptions.width = remainingWid
             textOptions.fontWeight  = "normal"
             textOptions.lineHeight = 1.4
             if(canvasWidth < 680){
-                textOptions.fontSize = 14
+                textOptions.fontSize = 12
                 textOptions.lineHeight = 1
             }else if(canvasWidth < 780){
-                textOptions.fontSize = 15
+                textOptions.fontSize = 13
                 textOptions.lineHeight = 1.1
             }
             textOptions.fontFamily = "poppins"
@@ -387,7 +387,7 @@ function leftCenterTitle(inputText, accText, title, para, paraNum, subtitle) {
         if(para == true){
             textOptions.left = canvasWidth/1.9;
 
-            textOptions.fontSize = 15
+            textOptions.fontSize = 15.5
 
             textOptions.width = remainingWid/1.2
             textOptions.fontWeight  = "normal"
@@ -718,7 +718,7 @@ async function colAccImgWithThreePoints(inputText, accText, title, para, paraNum
         }
 
         if (para == true) {
-            textOptions.fontSize = 15;
+            textOptions.fontSize = 15.5;
             textOptions.width = remainingWid / 3;
             textOptions.fontWeight = 'normal';
             textOptions.lineHeight = 1.4;

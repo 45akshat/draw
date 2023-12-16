@@ -27,7 +27,7 @@ function snapToObjects(target, canvas) {
     const targetCenter = target.getCenterPoint();
 
     // Remove previous suggestive lines
-    canvas.getObjects('line').forEach(line => canvas.remove(line));
+    canvas.getObjects('line').forEach(line => canvas.remove(line) );
 
     // Iterate through all objects on the canvas
     canvas.forEachObject(function (object) {
@@ -105,7 +105,7 @@ function snapToObjects(target, canvas) {
 
 // Function to create a new canvas and add it to the canvases array
 function createNewCanvas(index) {
-    const newCanvas = new fabric.Canvas('canvas' + index);
+    const newCanvas = new fabric.Canvas('canvas' + index, { renderOnAddRemove: false });
     // console.log(index)
     currSelectedCanvas = newCanvas; // Set the new canvas as the currently selected canvas
         
@@ -930,11 +930,24 @@ repImgDragAndDrop.addEventListener('drop', function(e) {
     openTextDiv()
   })
 
+  $("#openImagesButton").click(function(){
+    openImagesDiv()
+  })
+
+function openImagesDiv(){
+    $("#media_div").fadeOut(0); // 500ms (0.5s) is the duration of the hide effect
+    $('#upload_media_div').fadeOut(0);
+    $(".col_div").fadeOut(0)
+    $('#replace_media_div').fadeOut(0);
+    $("#text_div").fadeOut(0); // 500ms (0.5s) is the duration of the hide effect
+    $("#images_div").fadeIn(200);
+}
 
   
 function openRepMediaDiv() {
     $("#text_div").fadeOut(0); // 500ms (0.5s) is the duration of the hide effect
     $(".col_div").fadeOut(0)
+    $("#images_div").fadeOut(0);
     $('#upload_media_div').fadeOut(0);
     $("#media_div").fadeIn(200);
     $("#replace_media_div").fadeIn(200);
@@ -943,6 +956,7 @@ function openRepMediaDiv() {
 function openMediaDiv() {
         $("#text_div").fadeOut(0); // 500ms (0.5s) is the duration of the hide effect
         $(".col_div").fadeOut(0)
+        $("#images_div").fadeOut(0);
         $('#replace_media_div').fadeOut(0);
 
         $("#media_div").fadeIn(200);
@@ -955,6 +969,7 @@ function openTextDiv() {
         $("#media_div").fadeOut(0); // 500ms (0.5s) is the duration of the hide effect
         $('#upload_media_div').fadeOut(0);
         $(".col_div").fadeOut(0)
+        $("#images_div").fadeOut(0);
         $('#replace_media_div').fadeOut(0);
 
         textDiv.fadeIn(200);
@@ -964,6 +979,7 @@ function openTextDiv() {
 
 function closeAllDiv(){
     $(".col_div").fadeIn(100)
+    $("#images_div").fadeOut(0); // 500ms (0.5s) is the duration of the hide effect
     $("#media_div").fadeOut(0); // 500ms (0.5s) is the duration of the hide effect
     $('#upload_media_div').fadeOut(0);
     $('#replace_media_div').fadeOut(0);
