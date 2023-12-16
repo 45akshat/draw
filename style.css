@@ -351,3 +351,30 @@ select{
     background-color: rgb(215, 224, 250);
 
   }
+
+
+  .loader {
+    display: none;
+    position: absolute;
+    top: 35%;
+    left: 45%;
+    border: 16px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 16px solid rgb(20, 6, 175);
+    width: 90px;
+    height: 90px;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 1.8s linear infinite;
+    z-index: 99;
+  }
+  
+  /* Safari */
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }

@@ -373,7 +373,7 @@ AddPageVisibility()
 
 
 function createHtmlFromJson() {
-    var exportHtml = `<!DOCTYPE html><html> <head> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""> <link href="https://fonts.cdnfonts.com/css/arial" rel="stylesheet"> <link href="https://fonts.googleapis.com/css2?family=Alegreya&amp;family=Poppins:ital,wght@0,500;1,600&amp;display=swap" rel="stylesheet"> <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet"> <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">  <style>.aaon {display: flex;} body {height: fit-content;margin: 0;padding: 0;}</style></head><body>`
+    var exportHtml = `<!DOCTYPE html><html> <head> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""> <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet"> <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">  <style>.aaon {display: flex;} body {height: fit-content;margin: 0;padding: 0;}</style></head><body>`
 for (let i = 0; i < canvases.length; i++) {
     exportHtml +=  `<div class='aaon'>`+canvases[i].toSVG({ width: 771.3,height: 433.856})+`</div>`
 }
@@ -405,7 +405,8 @@ function downloadPdfLocal(){
                  pdfUrl = pdfUrl.replace("https://storage.googleapis.com/savepdf-eb6c4.appspot.com/" , "https://firebasestorage.googleapis.com/v0/b/savepdf-eb6c4.appspot.com/o/")
                 
                 pdfUrl = pdfUrl.replace(".pdf" , ".pdf?alt=media")
-                console.log(pdfUrl)
+                stopLoading()
+                window.open(pdfUrl)
                  // Handle the response as needed
              })
              .catch(error => {
@@ -434,7 +435,8 @@ function downloadPdfServer(){
                  pdfUrl = pdfUrl.replace("https://storage.googleapis.com/savepdf-eb6c4.appspot.com/" , "https://firebasestorage.googleapis.com/v0/b/savepdf-eb6c4.appspot.com/o/")
                 
                 pdfUrl = pdfUrl.replace(".pdf" , ".pdf?alt=media")
-                console.log(pdfUrl)
+                stopLoading()
+                window.open(pdfUrl)
                  // Handle the response as needed
              })
              .catch(error => {
@@ -443,11 +445,23 @@ function downloadPdfServer(){
              });
 }
 
+function showLoading(){
+    $('#overlay').show()
+    $('.loader').show()
+}
+
+function stopLoading(){
+    $('#overlay').hide()
+    $('.loader').hide() 
+}
+
 document.getElementById('download_btn').addEventListener("click", function(){
     if(location.href.search('http://127.0.0.1')==0){
         downloadPdfLocal()
+        showLoading()
     }else{
         downloadPdfServer()
+        showLoading()
     }
 })
  

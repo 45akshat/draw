@@ -10,7 +10,7 @@ function addText(inputText, accText, title, para, remark) {
         fill: '#000000',
         fontSize: 16,
         fontWeight: 'normal',
-        fontFamily: 'lato',
+        fontFamily: 'poppins',
         text: inputText,
         lineHeight: 1.1,
         cornerStyle: 'circle',
@@ -51,7 +51,7 @@ function addText(inputText, accText, title, para, remark) {
                 textOptions.fontSize = 15
                 textOptions.lineHeight = 1.1
             }
-            textOptions.fontFamily = "lato"
+            textOptions.fontFamily = "poppins"
 
         }
 
@@ -121,7 +121,7 @@ function mainTemplate(inputText, accText, title, para, remark){
         fill: '#000000',
         fontSize: 16,
         fontWeight: 'normal',
-        fontFamily: 'lato',
+        fontFamily: 'poppins',
         text: inputText,
         lineHeight: 1.1,
         cornerStyle: 'circle',
@@ -149,20 +149,20 @@ function mainTemplate(inputText, accText, title, para, remark){
             
         }
         if(para == true){
-            textOptions.fontSize = 16
+            textOptions.fontSize = 15
 
             textOptions.width = remainingWid
             textOptions.fontWeight  = "normal"
             textOptions.top  = titleAccHeight+canvasHeight/12+canvasHeight/24
             textOptions.lineHeight = 1.4
             if(canvasWidth < 680){
-                textOptions.fontSize = 14
+                textOptions.fontSize = 13
                 textOptions.lineHeight = 1
             }else if(canvasWidth < 780){
-                textOptions.fontSize = 15
+                textOptions.fontSize = 13.8
                 textOptions.lineHeight = 1.1
             }
-            textOptions.fontFamily = "lato"
+            textOptions.fontFamily = "poppins"
 
         }
 
@@ -231,7 +231,7 @@ function leftAccImgWithThreePoints(inputText, accText, title, para, paraNum) {
         fill: '#000000',
         fontSize: 16,
         fontWeight: 'normal',
-        fontFamily: 'lato',
+        fontFamily: 'poppins',
         text: inputText,
         lineHeight: 1.1,
         cornerStyle: 'circle',
@@ -273,7 +273,7 @@ function leftAccImgWithThreePoints(inputText, accText, title, para, paraNum) {
                 textOptions.fontSize = 15
                 textOptions.lineHeight = 1.1
             }
-            textOptions.fontFamily = "lato"
+            textOptions.fontFamily = "poppins"
             
             if(paraNum == 0){
                 textOptions.top  = titleAccHeight+canvasHeight/12+canvasHeight/12
@@ -340,7 +340,7 @@ function leftCenterTitle(inputText, accText, title, para, paraNum, subtitle) {
         fill: '#000000',
         fontSize: 16,
         fontWeight: 'normal',
-        fontFamily: 'lato',
+        fontFamily: 'poppins',
         text: inputText,
         lineHeight: 1.1,
         cornerStyle: 'circle',
@@ -387,19 +387,19 @@ function leftCenterTitle(inputText, accText, title, para, paraNum, subtitle) {
         if(para == true){
             textOptions.left = canvasWidth/1.9;
 
-            textOptions.fontSize = 17
+            textOptions.fontSize = 15
 
             textOptions.width = remainingWid/1.2
             textOptions.fontWeight  = "normal"
             textOptions.lineHeight = 1.3
             if(canvasWidth < 680){
-                textOptions.fontSize = 14
+                textOptions.fontSize = 12
                 textOptions.lineHeight = 1
             }else if(canvasWidth < 780){
-                textOptions.fontSize = 15
+                textOptions.fontSize = 13
                 textOptions.lineHeight = 1.1
             }
-            textOptions.fontFamily = "lato"
+            textOptions.fontFamily = "poppins"
             
 
 
@@ -668,7 +668,7 @@ async function colAccImgWithThreePoints(inputText, accText, title, para, paraNum
         fill: '#000000',
         fontSize: 16,
         fontWeight: 'normal',
-        fontFamily: 'lato',
+        fontFamily: 'poppins',
         text: inputText,
         lineHeight: 1.1,
         cornerStyle: 'circle',
@@ -718,19 +718,19 @@ async function colAccImgWithThreePoints(inputText, accText, title, para, paraNum
         }
 
         if (para == true) {
-            textOptions.fontSize = 16.5;
+            textOptions.fontSize = 15;
             textOptions.width = remainingWid / 3;
             textOptions.fontWeight = 'normal';
             textOptions.lineHeight = 1.4;
 
             if (canvasWidth < 680) {
-                textOptions.fontSize = 14;
+                textOptions.fontSize = 12;
                 textOptions.lineHeight = 1;
             } else if (canvasWidth < 780) {
-                textOptions.fontSize = 15;
+                textOptions.fontSize = 13;
                 textOptions.lineHeight = 1.1;
             }
-            textOptions.fontFamily = 'lato';
+            textOptions.fontFamily = 'poppins';
             textOptions.top = subtitleAccHeight + canvasHeight/24 + titleAccHeight + canvasHeight / 10 + canvasHeight / 6;
 
             if (paraNum == 0) {
