@@ -806,6 +806,8 @@ async function splitPointsAsync(text) {
   
 async function generateMainTemplate(userinput) {
     try {
+        showLoading()
+
         addPageBelow(2)
         addPageBelow(3)
         addPageBelow(4)
@@ -982,6 +984,7 @@ let threeParaAndTitlesJson
 
                     setTimeout(async()=>{
                         selectCanvas(6)
+                        stopLoading()
 
                         // conclusion slide
                     }, 300)
