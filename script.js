@@ -350,7 +350,7 @@ function AddPageVisibilityForSelective(index){
         })
     
         document.getElementsByClassName("addCanvasBelowBtn")[index].addEventListener("click", function(){
-            addPageBelow(i)
+            addPageBelow(index)
         })
         
         document.getElementsByClassName("canvas-container")[index].addEventListener("mouseover", function(){
